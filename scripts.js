@@ -99,44 +99,54 @@ function calculateTotal() {
 
         if (category.totalYearId) {
             const totalYearElement = document.getElementById(category.totalYearId);
-            if (totalYearElement) totalYearElement.textContent = `年額: ${Math.floor(categoryTotalYear)}円`;
+            if (totalYearElement) totalYearElement.textContent = ` ${Math.floor(categoryTotalYear)}円/年`;
         }
 
         if (category.totalMonthId) {
             const totalMonthElement = document.getElementById(category.totalMonthId);
-            if (totalMonthElement) totalMonthElement.textContent = `月額: ${Math.floor(categoryTotalMonth)}円`;
+            if (totalMonthElement) totalMonthElement.textContent = `${Math.floor(categoryTotalMonth)}円/月`;
         }
     });
 
-    document.getElementById('overall-total-year').textContent = `年額: ${Math.floor(overallTotalYear)}円`;
-    document.getElementById('overall-total-month').textContent = `月額: ${Math.floor(overallTotalMonth)}円`;
+    document.getElementById('overall-total-year').textContent = `${Math.floor(overallTotalYear)}円/年`;
+    document.getElementById('overall-total-month').textContent = `${Math.floor(overallTotalMonth)}円/月`;
 
-    document.getElementById('necessary-total-year').textContent = `年額: ${Math.floor(necessaryTotalYear)}円`;
-    document.getElementById('necessary-total-month').textContent = `月額: ${Math.floor(necessaryTotalMonth)}円`;
+    document.getElementById('necessary-total-year').textContent = `${Math.floor(necessaryTotalYear)}円/年`;
+    document.getElementById('necessary-total-month').textContent = `${Math.floor(necessaryTotalMonth)}円/月`;
 
-    document.getElementById('enjoyment-total-year').textContent = `年額: ${Math.floor(enjoymentTotalYear)}円`;
-    document.getElementById('enjoyment-total-month').textContent = `月額: ${Math.floor(enjoymentTotalMonth)}円`;
+    document.getElementById('enjoyment-total-year').textContent = `${Math.floor(enjoymentTotalYear)}円/年`;
+    document.getElementById('enjoyment-total-month').textContent = `${Math.floor(enjoymentTotalMonth)}円/月`;
 }
 
-window.onload = function fillExamples() {
+
+
+window.onload = function initializePage() {
+    // 記入例を自動入力
+    fillExamples();
+
+    // 記入例を基に合計金額を計算
+    calculateTotal();
+};
+
+function fillExamples() {
     // 毎月固定の記入例
     const necessaryFixedExamples = [
-        { selector: '.necessary-fixed', values: [80000, 4000, 4000, 2000, 3000, 4000, 6000, 12000, 15000, 27000, 1800] }
+        { selector: '.necessary-fixed', values: [70000, 20000, 4000, 4000, 2000, 3000, 4000, 5000, 10000, 13000, 23000, 1500] }
     ];
 
     const enjoymentFixedExamples = [
-        { selector: '.enjoyment-fixed', values: [20000, 10000, 10000, 2000] }
+        { selector: '.enjoyment-fixed', values: [20000, 10000, 10000, 2000, 40000] }
     ];
 
     // 年に数回の記入例
     const necessaryPeriodicExamples = [
-        { selector: '.necessary-periodic', values: [3000, 1000] },
-        { selector: '.necessary-periodic-count', values: [4, 10] }
+        { selector: '.necessary-periodic', values: [2000, 1000] },
+        { selector: '.necessary-periodic-count', values: [6, 10] }
     ];
 
     const enjoymentPeriodicExamples = [
-        { selector: '.enjoyment-periodic', values: [10000, 5000, 8000, 20000, 50000, 10000, 40000, 2000, 50000] },
-        { selector: '.enjoyment-periodic-count', values: [6, 6, 6, 4, 2, 4, 3, 6, 2] }
+        { selector: '.enjoyment-periodic', values: [10000, 5000, 5000, 20000, 50000, 10000, 40000, 2000, 50000] },
+        { selector: '.enjoyment-periodic-count', values: [6, 6, 6, 4, 1, 4, 2, 6, 1] }
     ];
 
     // 各フィールドに値を設定
@@ -153,4 +163,7 @@ window.onload = function fillExamples() {
     setValues(enjoymentFixedExamples);
     setValues(necessaryPeriodicExamples);
     setValues(enjoymentPeriodicExamples);
-};
+}
+
+
+

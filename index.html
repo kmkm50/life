@@ -15,26 +15,28 @@
             <button onclick="calculateTotal()">合計金額を計算</button>
             <div class= "total-box" >
                 <div class="section-title">幸せに生きるために必要</div>
-            <div class="overall-total" id="overall-total-month">月額: 0円</div>
-            <div class="overall-total" id="overall-total-year">年額: 0円</div>
+            <div class="overall-total" id="overall-total-month">0円/月</div>
+            <div class="overall-total" id="overall-total-year">0円/年</div>
             </div>
         </div>
 
         <div class="section">
             <div class="sectionA">
             <div class="section-title">生きるために必要</div>
-            <div class="total" id="necessary-total-month">月額: 0円</div>
-            <div class="total" id="necessary-total-year">年額: 0円</div>
+            <div class="section-title" id="necessary-total-month">0円/月</div>
+            <div class="section-title" id="necessary-total-year">0円/年</div>
         </div>
 
             <div class="box-row">
                 <div class="box">
                     <div class="total">毎月固定</div>
-                    <div class="total" id="fixed-total-month">月額: 0円</div>
-                    <div class="total" id="fixed-total-year">年額: 0円</div>
+                    <div class="total" id="fixed-total-month">0円/月</div>
+                    <div class="total" id="fixed-total-year">0円/年</div>
                     <div id="necessary-fixed">
                         <label>家賃</label>
-                        <input type="number" class="necessary-fixed" placeholder="例: 80000">
+                        <input type="number" class="necessary-fixed" placeholder="例: 70000">
+                        <label>食費</label>
+                        <input type="number" class="necessary-fixed" placeholder="例: 20000">
                         <label>電気</label>
                         <input type="number" class="necessary-fixed" placeholder="例: 4000">
                         <label>ガス</label>
@@ -45,27 +47,27 @@
                         <input type="number" class="necessary-fixed" placeholder="例: 3000">
                         <label>Wi-Fi</label>
                         <input type="number" class="necessary-fixed" placeholder="例: 4000">
-                        <a href="https://talentsquare.co.jp/tedori-calc-tool-monthly/">計算サイトはこちら※以下は月収30万円会社員の記入例</a>
+                        <a href="https://talentsquare.co.jp/tedori-calc-tool-monthly/">税金計算サイトはこちら※以下は月収25万円会社員の記入例</a>
                         <label>所得税</label>
-                        <input type="number" class="necessary-fixed" placeholder="例: 6000">
+                        <input type="number" class="necessary-fixed" placeholder="例: 5000">
                         <label>住民税</label>
-                        <input type="number" class="necessary-fixed" placeholder="例: 12000">
+                        <input type="number" class="necessary-fixed" placeholder="例: 10000">
                         <label>健康保険</label>
-                        <input type="number" class="necessary-fixed" placeholder="例: 15000">
+                        <input type="number" class="necessary-fixed" placeholder="例: 13000">
                         <label>年金</label>
-                        <input type="number" class="necessary-fixed" placeholder="例: 27000">
+                        <input type="number" class="necessary-fixed" placeholder="例: 23000">
                         <label>雇用保険</label>
-                        <input type="number" class="necessary-fixed" placeholder="例: 1800">
+                        <input type="number" class="necessary-fixed" placeholder="例: 1500">
                         <button onclick="addField('necessary-fixed', 'necessary-fixed')">項目追加</button>
                     </div>
 
                 </div>
                 <div class="box">
                     <div class="total">年に数回</div>
-                    <div class="total" id="periodic-total-month">月額: 0円</div>
-                    <div class="total" id="periodic-total-year">年額: 0円</div>
+                    <div class="total" id="periodic-total-month">0円/月</div>
+                    <div class="total" id="periodic-total-year">0円/年</div>
                     <div id="necessary-periodic">
-                        <label>病院</label>
+                        <label>病院/薬</label>
                         <div class="field-container">
                             <input type="number" class="necessary-periodic" placeholder="一回の出費（例:3000）">
                             <input type="number" class="necessary-periodic-count" placeholder="回数 (例:4)">
@@ -85,13 +87,13 @@
 
         <div class="section">
             <div class="section-title">幸せのために必要</div>
-            <div class="total" id="enjoyment-total-month">月額: 0円</div>
-            <div class="total" id="enjoyment-total-year">年額: 0円</div>
+            <div class="section-title" id="enjoyment-total-month">0円/月</div>
+            <div class="section-title" id="enjoyment-total-year">0円/年</div>
             <div class="box-row">
                 <div class="box">
                     <div class="total">毎月固定</div>
-                    <div class="total" id="enjoyment-fixed-total-month">月額: 0円</div>
-                    <div class="total" id="enjoyment-fixed-total-year">年額: 0円</div>
+                    <div class="total" id="enjoyment-fixed-total-month">0円/月</div>
+                    <div class="total" id="enjoyment-fixed-total-year">0円/年</div>
                     <div id="enjoyment-fixed">
                         <label>交際費</label>
                         <input type="number" class="enjoyment-fixed" placeholder="例: 20000">
@@ -101,61 +103,63 @@
                         <input type="number" class="enjoyment-fixed" placeholder="例: 10000">
                         <label>サブスク（音楽/動画/ファンクラブ..）</label>
                         <input type="number" class="enjoyment-fixed" placeholder="例: 2000">
+                        <label>貯金</label>
+                        <input type="number" class="enjoyment-fixed" placeholder="例: 40000">
                         <button onclick="addField('enjoyment-fixed', 'enjoyment-fixed')">項目追加</button>
                     </div>
 
                 </div>
                 <div class="box">
                     <div class="total">年に数回</div>
-                    <div class="total" id="enjoyment-periodic-total-month">月額: 0円</div>
-                    <div class="total" id="enjoyment-periodic-total-year">年額: 0円</div>
+                    <div class="total" id="enjoyment-periodic-total-month">0円/月</div>
+                    <div class="total" id="enjoyment-periodic-total-year">0円/年</div>
                     <div id="enjoyment-periodic">
                         <label>ファッション</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 10000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 10000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 6)">
                         </div>
                         <label>化粧品</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 5000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 5000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 6)">
                         </div>
                         <label>美容院など</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 8000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 5000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 6)">
                         </div>
                         <label>インテリア</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 20000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 20000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 4)">
                         </div>
                         
                         <label>ガジェット</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 50000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 50000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 2)">
                         </div>
                         <label>イベント/ライブ</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 10000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 10000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 4)">
                         </div>
                         <label>旅行/帰省</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 40000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 40000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 3)">
                         </div>
                         <label>本/勉強</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 2000">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 2000">
                             <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 6)">
                         </div>
                         
                         <label>冠婚葬祭</label>
                         <div class="field-container">
-                            <input type="number" class="enjoyment-periodic" placeholder="例: 50000">
-                            <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 2)">
+                            <input type="number" class="enjoyment-periodic" placeholder="一回の出費（例: 50000">
+                            <input type="number" class="enjoyment-periodic-count" placeholder="回数 (例: 1)">
                         </div>
                         <button onclick="addField('enjoyment-periodic', 'enjoyment-periodic', true)">項目追加</button>
                     </div>

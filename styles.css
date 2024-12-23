@@ -29,7 +29,7 @@ header {
 }
 
 .overall-total {
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
     margin: 10px 0;
 }
@@ -100,6 +100,12 @@ button:hover {
     color: #555;
 }
 
+.total1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 5;
+    color: #555;
+}
 .wrapper {
     margin: 20px auto;
     max-width: 1200px;
