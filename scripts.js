@@ -7,7 +7,6 @@ window.onload = function initializePage() {
 };
 
 function fillExamples() {
-    // 毎月固定の記入例
     const necessaryFixedExamples = [
         { selector: '.necessary-fixed', values: [70000, 20000, 4000, 4000, 2000, 3000, 4000, 5000, 10000, 13000, 23000, 1500] }
     ];
@@ -16,7 +15,6 @@ function fillExamples() {
         { selector: '.enjoyment-fixed', values: [20000, 5000, 0, 2000] }
     ];
 
-    // 年に数回の記入例
     const necessaryPeriodicExamples = [
         { selector: '.necessary-periodic', values: [2000, 1000] },
         { selector: '.necessary-periodic-count', values: [6, 10] }
@@ -27,7 +25,6 @@ function fillExamples() {
         { selector: '.enjoyment-periodic-count', values: [6, 6, 6, 4, 4, 2, 6, 1] }
     ];
 
-    // 各フィールドに値を設定
     const setValues = (examples) => {
         examples.forEach((example) => {
             const inputs = document.querySelectorAll(example.selector);
@@ -63,23 +60,23 @@ function calculateTotal() {
     let enjoymentTotalMonth = 0;
 
     categories.forEach((category) => {
-        const inputs = document.getElementsByClassName(category.class);
-        const counts = category.count ? document.getElementsByClassName(`${category.class}-count`) : null;
+        const inputs = document.querySelectorAll(`.${category.class}`);
+        const counts = category.count ? document.querySelectorAll(`.${category.class}-count`) : null;
         let categoryTotalMonth = 0;
         let categoryTotalYear = 0;
 
         if (!category.count) {
-            for (let i = 0; i < inputs.length; i++) {
-                const value = parseFloat(inputs[i].value) || 0;
+            inputs.forEach(input => {
+                const value = parseFloat(input.value) || 0;
                 categoryTotalMonth += value;
-            }
+            });
             categoryTotalYear = categoryTotalMonth * 12;
         } else {
-            for (let i = 0; i < inputs.length; i++) {
-                const value = parseFloat(inputs[i].value) || 0;
-                const multiplier = parseInt(counts[i]?.value) || 0;
+            inputs.forEach((input, index) => {
+                const value = parseFloat(input.value) || 0;
+                const multiplier = parseInt(counts[index]?.value) || 0;
                 categoryTotalYear += value * multiplier;
-            }
+            });
             categoryTotalMonth = Math.floor(categoryTotalYear / 12);
         }
 
@@ -96,7 +93,7 @@ function calculateTotal() {
 
         if (category.totalYearId) {
             const totalYearElement = document.getElementById(category.totalYearId);
-            if (totalYearElement) totalYearElement.textContent = ` ${formatNumber(Math.floor(categoryTotalYear))}円/年`;
+            if (totalYearElement) totalYearElement.textContent = `${formatNumber(Math.floor(categoryTotalYear))}円/年`;
         }
 
         if (category.totalMonthId) {
@@ -112,56 +109,42 @@ function calculateTotal() {
     document.getElementById('necessary-total-month').textContent = `${formatNumber(Math.floor(necessaryTotalMonth))}円/月`;
 
     document.getElementById('enjoyment-total-year').textContent = `${formatNumber(Math.floor(enjoymentTotalYear))}円/年`;
-    document.getElementById('enjoyment-total-month').textContent = `${formatNumber(Math.floor(enjoymentTotalMonth))}円月`;
+    document.getElementById('enjoyment-total-month').textContent = `${formatNumber(Math.floor(enjoymentTotalMonth))}円/月`;
 }
-
 
 function addField(sectionId, className, isPeriodic = false) {
     const section = document.getElementById(sectionId);
 
-    // 項目全体のコンテナを作成
     const fieldContainer = document.createElement('div');
     fieldContainer.className = 'field-container';
-    fieldContainer.style.display = 'flex';
-    fieldContainer.style.alignItems = 'center';
-    fieldContainer.style.marginBottom = '10px';
-    fieldContainer.style.gap = '10px';
 
-    // 項目名入力フィールド
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.placeholder = '項目名';
     nameInput.className = `${className}-name`;
-    nameInput.style.flex = '1';
     fieldContainer.appendChild(nameInput);
 
-    // 金額入力フィールド
     const valueInput = document.createElement('input');
     valueInput.type = 'number';
     valueInput.placeholder = '金額 (円)';
     valueInput.className = className;
-    valueInput.style.flex = '1';
     fieldContainer.appendChild(valueInput);
 
-    // 回数入力フィールド (必要な場合のみ)
     if (isPeriodic) {
         const countInput = document.createElement('input');
         countInput.type = 'number';
         countInput.placeholder = '回数';
         countInput.className = `${className}-count`;
-        countInput.style.flex = '1';
         fieldContainer.appendChild(countInput);
     }
 
-    // 削除ボタン
     const deleteButton = document.createElement('button');
     deleteButton.textContent = '削除';
-    deleteButton.style.flex = '0';
     deleteButton.addEventListener('click', () => {
         fieldContainer.remove();
+        calculateTotal(); // 再計算
     });
     fieldContainer.appendChild(deleteButton);
 
-    // フィールドコンテナをセクションに追加
     section.appendChild(fieldContainer);
 }
