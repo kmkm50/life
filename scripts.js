@@ -8,11 +8,11 @@ window.onload = function initializePage() {
 
 function fillExamples() {
     const necessaryFixedExamples = [
-        { selector: '.necessary-fixed', values: [70000, 20000, 4000, 4000, 2000, 3000, 4000, 5000, 10000, 13000, 23000, 1500] }
+        { selector: '.necessary-fixed', values: [60000, 20000, 4000, 4000, 2000, 3000, 4000, 5000, 10000, 13000, 23000, 1500] }
     ];
 
     const enjoymentFixedExamples = [
-        { selector: '.enjoyment-fixed', values: [20000, 5000, 0, 2000] }
+        { selector: '.enjoyment-fixed', values: [20000, 5000, 0, 2000,30000] }
     ];
 
     const necessaryPeriodicExamples = [
@@ -22,7 +22,7 @@ function fillExamples() {
 
     const enjoymentPeriodicExamples = [
         { selector: '.enjoyment-periodic', values: [10000, 5000, 5000, 20000, 10000, 40000, 2000, 50000] },
-        { selector: '.enjoyment-periodic-count', values: [6, 6, 6, 4, 4, 2, 6, 1] }
+        { selector: '.enjoyment-periodic-count', values: [6, 6, 6, 6, 4, 2, 6, 1] }
     ];
 
     const setValues = (examples) => {
